@@ -10,12 +10,15 @@ public class TreeDemo {
         root.getLeft().setRight(new Node(50));
         root.getRight().setLeft(new Node(60));
         root.getRight().setRight(new Node(70));
+//        root.getRight().getLeft().setRight(new Node(80));
+
         System.out.println("Pre Order Traversal");
         treeDemo.preOrderTraversal(root);
         System.out.println("In Order Traversal");
         treeDemo.inOrderTraversal(root);
         System.out.println("Post Order Traversal");
         treeDemo.postOrderTraversal(root);
+        System.out.println("Height of binary tree root: " + treeDemo.heightOfBinaryTree(root));
     }
 
     public void inOrderTraversal(Node root) {
@@ -39,6 +42,14 @@ public class TreeDemo {
             postOrderTraversal(root.getLeft());
             postOrderTraversal(root.getRight());
             System.out.println("Node: " + root.getValue());
+        }
+    }
+
+    public int heightOfBinaryTree(Node root) {
+        if (root == null) {
+            return 0;
+        } else {
+            return 1 + Math.max(heightOfBinaryTree(root.getLeft()), heightOfBinaryTree(root.getRight()));
         }
     }
 }

@@ -1,5 +1,9 @@
 package com.javaBootCamp.algos.trees;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class TreeDemo {
     public static void main(String[] args) {
         TreeDemo treeDemo = new TreeDemo();
@@ -8,8 +12,8 @@ public class TreeDemo {
         root.setRight(new Node(30));
         root.getLeft().setLeft(new Node(40));
         root.getLeft().setRight(new Node(50));
-        root.getLeft().getLeft().setLeft(new Node(70));
-        root.getLeft().getRight().setRight(new Node(80));
+        root.getLeft().getLeft().setLeft(new Node(80));
+        root.getLeft().getRight().setRight(new Node(90));
         root.getRight().setLeft(new Node(60));
         root.getRight().setRight(new Node(70));
 //        root.getRight().getLeft().setRight(new Node(80));
@@ -24,6 +28,9 @@ public class TreeDemo {
 
         System.out.println("Print at k nodes");
         treeDemo.printAtK(root, 2);
+
+        System.out.println("Level Order Traversal");
+        treeDemo.levelOrderTraversal(root);
     }
 
     public void inOrderTraversal(Node root) {
@@ -65,6 +72,18 @@ public class TreeDemo {
         } else {
             printAtK(root.getLeft(), k - 1);
             printAtK(root.getRight(), k - 1);
+        }
+    }
+
+    public void levelOrderTraversal(Node root) {
+        if (root == null) return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            System.out.println(current.getValue());
+            if (current.getLeft() != null) queue.add(current.getLeft());
+            if (current.getRight() != null) queue.add(current.getRight());
         }
     }
 }

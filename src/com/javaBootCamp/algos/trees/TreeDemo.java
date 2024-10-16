@@ -8,6 +8,8 @@ public class TreeDemo {
         root.setRight(new Node(30));
         root.getLeft().setLeft(new Node(40));
         root.getLeft().setRight(new Node(50));
+        root.getLeft().getLeft().setLeft(new Node(70));
+        root.getLeft().getRight().setRight(new Node(80));
         root.getRight().setLeft(new Node(60));
         root.getRight().setRight(new Node(70));
 //        root.getRight().getLeft().setRight(new Node(80));
@@ -19,6 +21,9 @@ public class TreeDemo {
         System.out.println("Post Order Traversal");
         treeDemo.postOrderTraversal(root);
         System.out.println("Height of binary tree root: " + treeDemo.heightOfBinaryTree(root));
+
+        System.out.println("Print at k nodes");
+        treeDemo.printAtK(root, 2);
     }
 
     public void inOrderTraversal(Node root) {
@@ -50,6 +55,16 @@ public class TreeDemo {
             return 0;
         } else {
             return 1 + Math.max(heightOfBinaryTree(root.getLeft()), heightOfBinaryTree(root.getRight()));
+        }
+    }
+
+    public void printAtK(Node root, int k) {
+        if (root == null) return;
+        if (k == 0) {
+            System.out.print(root.getValue() + " ");
+        } else {
+            printAtK(root.getLeft(), k - 1);
+            printAtK(root.getRight(), k - 1);
         }
     }
 }

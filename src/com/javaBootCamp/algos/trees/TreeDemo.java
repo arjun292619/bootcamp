@@ -1,7 +1,6 @@
 package com.javaBootCamp.algos.trees;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 public class TreeDemo {
@@ -34,6 +33,8 @@ public class TreeDemo {
 
         System.out.println("Level Order Traversal Line by Line");
         treeDemo.lineLevelTraversal(root);
+
+        System.out.println("Size of Binary Tree: " + treeDemo.sizeOfBinaryTree(root));
     }
 
     public void inOrderTraversal(Node root) {
@@ -105,4 +106,12 @@ public class TreeDemo {
             System.out.println();
         }
     }
+
+    public int sizeOfBinaryTree(Node root) {
+        if (root == null) return 0;
+        else {
+            return 1 + sizeOfBinaryTree(root.getLeft()) + sizeOfBinaryTree(root.getRight());
+        }
+    }
+
 }

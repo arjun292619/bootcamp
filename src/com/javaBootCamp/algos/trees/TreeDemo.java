@@ -31,6 +31,9 @@ public class TreeDemo {
 
         System.out.println("Level Order Traversal");
         treeDemo.levelOrderTraversal(root);
+
+        System.out.println("Level Order Traversal Line by Line");
+        treeDemo.lineLevelTraversal(root);
     }
 
     public void inOrderTraversal(Node root) {
@@ -84,6 +87,22 @@ public class TreeDemo {
             System.out.println(current.getValue());
             if (current.getLeft() != null) queue.add(current.getLeft());
             if (current.getRight() != null) queue.add(current.getRight());
+        }
+    }
+
+    public void lineLevelTraversal(Node root) {
+        if (root == null) return;
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Node current = queue.poll();
+                System.out.print(current.getValue() + " ");
+                if (current.getLeft() != null) queue.add(current.getLeft());
+                if (current.getRight() != null) queue.add(current.getRight());
+            }
+            System.out.println();
         }
     }
 }

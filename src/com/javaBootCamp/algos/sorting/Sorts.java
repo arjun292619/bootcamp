@@ -43,4 +43,7 @@ public class Sorts {
             swap(inputArr, i, lowest);
         }
     }
+
+    public void insertionSort(int[] inputArr) {
+    }
 }

@@ -1,9 +1,9 @@
 package com.javaBootCamp.algos.linkedLists.sll;
 
 public class SingleLinkedList {
-    Node head;
-    Node tail;
-    int size = 0;
+    private Node head;
+    private Node tail;
+    private int size = 0;
 
     public SingleLinkedList(Node head) {
         this.head = head;
@@ -15,6 +15,30 @@ public class SingleLinkedList {
         head = new Node(data);
         tail = null;
         ++size;
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    public void setTail(Node tail) {
+        this.tail = tail;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public SingleLinkedList() {

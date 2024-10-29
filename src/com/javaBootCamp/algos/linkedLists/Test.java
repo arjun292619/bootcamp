@@ -1,4 +1,6 @@
-package com.javaBootCamp.algos.linkedList;
+package com.javaBootCamp.algos.linkedLists;
+
+import com.javaBootCamp.algos.linkedLists.sll.Node;
 
 public class Test {
     public static void main(String[] args) {
@@ -27,7 +29,13 @@ public class Test {
         list2 = test.insertAtEnd(list2, 36);
         list2 = test.insertAtEnd(list2, 46);
         test.printListIterative(list2);
+        System.out.println(test.search(list2, 46));
 
+        Node list3 = test.insertAtEnd(null, 3);
+        list3 = test.insertAtEnd(list3, 13);
+        test.printListIterative(list3);
+        list3 = test.deleteAtBegin(list3);
+        test.printListIterative(list3);
     }
 
     public void printListIterative(Node head) {
@@ -64,5 +72,23 @@ public class Test {
         }
         temp.next = newNode;
         return node;
+    }
+
+    public Node deleteAtBegin(Node head) {
+        if (head == null) return null;
+        Node nextNode = head.next;
+        head = null;
+        return nextNode;
+    }
+
+    public int search(Node list, int key) {
+        Node current = list;
+        int i = -1;
+        while (current != null) {
+            i++;
+            if (current.data == key) return i;
+            current = current.next;
+        }
+        return -1;
     }
 }

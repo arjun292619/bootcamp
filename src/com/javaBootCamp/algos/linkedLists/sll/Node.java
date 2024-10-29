@@ -1,4 +1,4 @@
-package com.javaBootCamp.algos.linkedList;
+package com.javaBootCamp.algos.linkedLists.sll;
 
 public class Node {
     public int data;

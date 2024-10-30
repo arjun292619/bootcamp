@@ -13,6 +13,7 @@ public class Test {
         temp1.next = temp2;
         temp2.next = temp3;
         test.printListIterative(head);
+        head = test.deleteAtEnd(head);
         System.out.println();
         test.printListRecursive(head);
         Node list1 = test.insertAtBegin(null, 5);
@@ -36,6 +37,11 @@ public class Test {
         test.printListIterative(list3);
         list3 = test.deleteAtBegin(list3);
         test.printListIterative(list3);
+
+        Node list4 = test.insertAtBegin(null, 5);
+        test.printListIterative(list4);
+        System.out.println("After removing");
+        test.printListIterative(list4);
     }
 
     public void printListIterative(Node head) {
@@ -74,11 +80,29 @@ public class Test {
         return node;
     }
 
+    public Node insertAtX(Node head, int x) {
+        return null;
+    }
+
     public Node deleteAtBegin(Node head) {
         if (head == null) return null;
         Node nextNode = head.next;
         head = null;
         return nextNode;
+    }
+
+    public Node deleteAtEnd(Node head) {
+        if (head == null) return null;
+        if (head.next == null) return null;
+        Node current = head;
+        Node previous = null;
+        while (current.next != null) {
+            previous = current;
+            System.out.print("Data point: " + previous.data + " ");
+            current = current.next;
+        }
+        previous.next = null;
+        return head;
     }
 
     public int search(Node list, int key) {

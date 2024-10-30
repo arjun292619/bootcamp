@@ -41,6 +41,7 @@ public class Test {
         Node list4 = test.insertAtBegin(null, 5);
         test.printListIterative(list4);
         System.out.println("After removing");
+        list4 = test.deleteAtEnd(list4);
         test.printListIterative(list4);
     }
 
@@ -80,7 +81,7 @@ public class Test {
         return node;
     }
 
-    public Node insertAtX(Node head, int x) {
+    public Node insertAtX(Node head, int x, int position) {
         return null;
     }
 
@@ -92,8 +93,7 @@ public class Test {
     }
 
     public Node deleteAtEnd(Node head) {
-        if (head == null) return null;
-        if (head.next == null) return null;
+        if (head == null || head.next == null) return null;
         Node current = head;
         Node previous = null;
         while (current.next != null) {

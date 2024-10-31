@@ -33,6 +33,9 @@ public class Test {
         list2 = test.insertAtX(list2, 56, 0);
         test.printListIterative(list2);
         System.out.println(test.search(list2, 46));
+        System.out.println("reverse the linked list");
+        Node reversedList2 = test.reverse(list2);
+        test.printListIterative(reversedList2);
 
         Node list3 = test.insertAtEnd(null, 3);
         list3 = test.insertAtEnd(list3, 13);
@@ -134,6 +137,18 @@ public class Test {
     }
 
     public void printMiddle(Node head) {
+    }
 
+    public Node reverse(Node head) {
+        if (head == null) return null;
+        Node current = head;
+        Node pre = null, next;
+        while (current != null) {
+            next = current.next;
+            current.next = pre;
+            pre = current;
+            current = next;
+        }
+        return pre;
     }
 }

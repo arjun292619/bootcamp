@@ -158,4 +158,21 @@ public class Test {
         current.next = previous;
         return reverseRecursive(next, current);
     }
+
+    public Node sortedInsert(Node head, int key) {
+        Node node = new Node(key);
+        if (head == null) return node;
+        if (key < head.data) {
+            node.next = head;
+            return node;
+        }
+        Node current = head, pre = null;
+        while (current != null && current.data <= key) {
+            pre = current;
+            current = current.next;
+        }
+        node.next = current;
+        pre.next = node;
+        return head;
+    }
 }

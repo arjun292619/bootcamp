@@ -151,4 +151,11 @@ public class Test {
         }
         return pre;
     }
+
+    public Node reverseRecursive(Node current, Node previous) {
+        if (current == null) return previous;
+        Node next = current.next;
+        current.next = previous;
+        return reverseRecursive(next, current);
+    }
 }

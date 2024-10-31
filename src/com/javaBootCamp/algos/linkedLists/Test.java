@@ -29,6 +29,8 @@ public class Test {
         list2 = test.insertAtEnd(list2, 26);
         list2 = test.insertAtEnd(list2, 36);
         list2 = test.insertAtEnd(list2, 46);
+        System.out.println("list 2");
+        list2 = test.insertAtX(list2, 56, 0);
         test.printListIterative(list2);
         System.out.println(test.search(list2, 46));
 
@@ -82,7 +84,23 @@ public class Test {
     }
 
     public Node insertAtX(Node head, int x, int position) {
-        return null;
+        Node node = new Node(x);
+        if (position == 0 && head == null) return node;
+        if (position == 0 && head != null) {
+            node.next = head;
+            return node;
+        }
+        Node current = head;
+        Node pre = head;
+        int counter = 0;
+        while (current != null && counter < position) {
+            pre = current;
+            current = current.next;
+            ++counter;
+        }
+        node.next = current;
+        pre.next = node;
+        return head;
     }
 
     public Node deleteAtBegin(Node head) {
@@ -98,7 +116,6 @@ public class Test {
         Node previous = null;
         while (current.next != null) {
             previous = current;
-            System.out.print("Data point: " + previous.data + " ");
             current = current.next;
         }
         previous.next = null;
@@ -114,5 +131,9 @@ public class Test {
             current = current.next;
         }
         return -1;
+    }
+
+    public void printMiddle(Node head) {
+
     }
 }

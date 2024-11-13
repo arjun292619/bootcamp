@@ -9,11 +9,27 @@ public class Test {
         Node temp1 = new Node(20);
         Node temp2 = new Node(30);
         Node temp3 = new Node(40);
+        Node temp4 = new Node(50);
+        Node temp5 = new Node(60);
+        Node temp6 = new Node(70);
+        Node temp7 = new Node(80);
         head.next = temp1;
         temp1.next = temp2;
         temp2.next = temp3;
+        temp3.next = temp4;
+        temp4.next = temp5;
+        temp5.next = temp6;
+        temp6.next = temp7;
         test.printListIterative(head);
-        head = test.deleteAtEnd(head);
+        System.out.println("-".repeat(50));
+//        Node reversedHead = test.reverseK(head, 3);
+//        System.out.println("reversedHead next: " + reversedHead);
+//        test.printListIterative(reversedHead);
+        System.out.println("-".repeat(50));
+        Node groupReverse = test.reverseGroup(head, 3);
+        test.printListIterative(groupReverse);
+        System.out.println("-".repeat(50));
+        /*head = test.deleteAtEnd(head);
         System.out.println();
         test.printListRecursive(head);
         Node list1 = test.insertAtBegin(null, 5);
@@ -44,10 +60,10 @@ public class Test {
         test.printListIterative(list3);
 
         Node list4 = test.insertAtBegin(null, 5);
-        test.printListIterative(list4);
+        test.printListIterative(    list4);
         System.out.println("After removing");
         list4 = test.deleteAtEnd(list4);
-        test.printListIterative(list4);
+        test.printListIterative(list4);*/
     }
 
     public void printListIterative(Node head) {
@@ -150,6 +166,38 @@ public class Test {
             current = next;
         }
         return pre;
+    }
+
+    public Node reverseK(Node head, int k) {
+        Node current = head, previous = null, next;
+        int counter = 0;
+        while (current != null && counter < k) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+            counter++;
+        }
+        return previous;
+//        return current;
+    }
+
+    public Node reverseGroup(Node head, int k) {
+        Node current = head, previous = null, next = null;
+        int counter = 0;
+        while (current != null) {
+//            next = current.next;
+            while (current != null && counter < k) {
+                next = current.next;
+                current.next = previous;
+                previous = current;
+                current = next;
+                counter++;
+            }
+            System.out.println("current: " + current + " next: " + next);
+//            current = current.next;
+        }
+        return null;
     }
 
     public Node reverseRecursive(Node current, Node previous) {

@@ -8,7 +8,8 @@ public class ArrayDemo {
         int[] array1 = {5, 8, 20, 10};
         int[] array2 = {40, 8, 50, 100};
         int[] array3 = {10, 20, 20, 30, 30, 30, 40};
-        int[] array4 = {5, 20, 12,20,8};
+        int[] array4 = {5, 20, 12, 20, 8};
+        int[] array5 = {10,5,7,30};
 
         //get largest from array
         System.out.println(arrayDemo.getLargest(array1));
@@ -19,6 +20,11 @@ public class ArrayDemo {
         //remove duplicates
         arrayDemo.remDuplicate(array3);
         System.out.println(Arrays.toString(array3));
+
+        //reverse an array
+        System.out.println(Arrays.toString(array5));
+        arrayDemo.reverse(array5);
+        System.out.println(Arrays.toString(array5));
 
 
     }
@@ -61,6 +67,17 @@ public class ArrayDemo {
                 array[nd] = array[i];
                 nd++;
             }
+        }
+    }
+
+    public void reverse(int[] array) {
+        int start = 0, end = array.length - 1, temp;
+        while (start < end) {
+            temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+            start++;
+            end--;
         }
     }
 }

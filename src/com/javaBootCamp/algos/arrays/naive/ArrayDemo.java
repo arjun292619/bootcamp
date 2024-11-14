@@ -19,6 +19,22 @@ public class ArrayDemo {
         return max;
     }
 
+    public int removeDuplicates(int[] array) {
+        int[] temp = new int[array.length];
+        int index = 1;
+        temp[0] = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i - 1] != array[i]) {
+                temp[index] = array[i];
+                index++;
+            }
+        }
+        for (int i = 0; i < index; i++) {
+            array[i] = temp[i];
+        }
+        return index;
+    }
+
     public int findMajorityElement() {
         return -1;
     }

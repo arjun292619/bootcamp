@@ -12,6 +12,7 @@ public class ArrayDemo {
         int[] array5 = {10, 5, 7, 30};
         int[] array6 = {5, 20, 30, 80};
         int[] array7 = {1, 2, 3, 5, 6};
+        int[] array8 = {2, 3, 0, 5, 0, 0, 0, 6, 8, 0};
 
         //get largest from array
         System.out.println(arrayDemo.getLargest(array1));
@@ -34,8 +35,18 @@ public class ArrayDemo {
 
 //        Left rotate array by 1
         System.out.println(Arrays.toString(array7));
-        arrayDemo.lrotateOne(array7);
+        arrayDemo.lRotateOne(array7);
         System.out.println(Arrays.toString(array7));
+
+        //        Left rotate array by 2
+        System.out.println(Arrays.toString(array7));
+        arrayDemo.leftRotateN(array7, 3);
+        System.out.println(Arrays.toString(array7));
+
+//        Move zeros to end
+        System.out.println(Arrays.toString(array8));
+        arrayDemo.moveZeros(array8);
+        System.out.println(Arrays.toString(array8));
 
 
     }
@@ -101,7 +112,7 @@ public class ArrayDemo {
         }
     }
 
-    public void lrotateOne(int[] array) {
+    public void lRotateOne(int[] array) {
         //{1,2,3,4,5} input
         //{2,3,4,5,1} output
         int temp = array[0];
@@ -109,5 +120,36 @@ public class ArrayDemo {
             array[i - 1] = array[i];
         }
         array[array.length - 1] = temp;
+    }
+
+    public void leftRotateN(int[] array, int n) {
+        int[] temp = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            temp[i] = array[i];
+        }
+
+        for (int i = n; i < array.length; i++) {
+            array[i - n] = array[i];
+        }
+
+        for (int i = 0; i < n; i++) {
+            array[array.length - n + i] = temp[i];
+        }
+    }
+
+    public void moveZeros(int[] array) {
+//        {2,3,0,5,0,0,0,6,8,0}
+//        {2,3,5,6,8,0,0,0,0,0}
+        int index = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != 0) {
+                int temp = array[i];
+                array[i] = array[index];
+                array[index] = temp;
+                index++;
+            }
+        }
+
     }
 }

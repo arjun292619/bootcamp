@@ -52,6 +52,11 @@ public class ArrayDemo {
 
         //        print leaders in array
         arrayDemo.leaders(array9);
+        System.out.println();
+
+        // getSum
+        int result = arrayDemo.getSum(array9, 2, 6);
+        System.out.println(result);
 
 
     }
@@ -168,5 +173,24 @@ public class ArrayDemo {
                 currentLeader = array[i];
             }
         }
+    }
+
+    public int[] prefixSum(int[] array) {
+        int[] ps = new int[array.length];
+        ps[0] = array[0];
+        for (int i = 1; i < array.length; i++) {
+            ps[i] = array[i] + ps[i - 1];
+        }
+        return ps;
+    }
+
+    public int getSum(int[] array, int start, int end) {
+        int[] presum = prefixSum(array);
+        if (start == 0) {
+            return presum[end];
+        } else {
+            return presum[end] - presum[start - 1];
+        }
+
     }
 }

@@ -29,6 +29,10 @@ public class ArrayDemo {
 
         //        print leaders in array
         arrayDemo.leaders(array9);
+        System.out.println();
+
+        int result = arrayDemo.getSum(array9, 2, 6);
+        System.out.println(result);
     }
 
     public int getLargest(int[] array) {
@@ -99,5 +103,13 @@ public class ArrayDemo {
             }
             if (flag) System.out.print(array[i] + " ");
         }
+    }
+
+    public int getSum(int[] array, int start, int end) {
+        int sum = 0;
+        for (int i = start; i <= end; i++) {
+            sum += array[i];
+        }
+        return sum;
     }
 }

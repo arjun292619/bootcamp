@@ -9,6 +9,7 @@ public class ArrayDemo {
         int[] array2 = {40, 8, 50, 100};
         int[] array3 = {5, 20, 30, 80};
         int[] array7 = {1, 2, 3, 5, 6};
+        int[] array9 = {7, 10, 4, 3, 10, 6, 5, 2};
         System.out.println(arrayDemo.getLargest(array1));
         System.out.println(arrayDemo.getLargest(array2));
 
@@ -26,6 +27,8 @@ public class ArrayDemo {
         arrayDemo.leftRotateN(array7, 2);
         System.out.println(Arrays.toString(array7));
 
+        //        print leaders in array
+        arrayDemo.leaders(array9);
     }
 
     public int getLargest(int[] array) {
@@ -82,6 +85,19 @@ public class ArrayDemo {
     public void leftRotateN(int[] array, int n) {
         for (int i = 0; i < n; i++) {
             lRotateOne(array);
+        }
+    }
+
+    public void leaders(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            boolean flag = true;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] <= array[j]) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) System.out.print(array[i] + " ");
         }
     }
 }

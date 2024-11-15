@@ -13,6 +13,8 @@ public class ArrayDemo {
         int[] array6 = {5, 20, 30, 80};
         int[] array7 = {1, 2, 3, 5, 6};
         int[] array8 = {2, 3, 0, 5, 0, 0, 0, 6, 8, 0};
+        int[] array9 = {7, 10, 4, 3, 10, 6, 5, 2};
+
 
         //get largest from array
         System.out.println(arrayDemo.getLargest(array1));
@@ -47,6 +49,9 @@ public class ArrayDemo {
         System.out.println(Arrays.toString(array8));
         arrayDemo.moveZeros(array8);
         System.out.println(Arrays.toString(array8));
+
+        //        print leaders in array
+        arrayDemo.leaders(array9);
 
 
     }
@@ -151,5 +156,17 @@ public class ArrayDemo {
             }
         }
 
+    }
+
+    public void leaders(int[] array) {
+//        {7, 10, 4, 3, 10, 6, 5, 2};
+        int currentLeader = array[array.length - 1];
+        System.out.print(currentLeader + " ");
+        for (int i = array.length - 2; i >= 0; i--) {
+            if (array[i] > currentLeader) {
+                System.out.print(array[i] + " ");
+                currentLeader = array[i];
+            }
+        }
     }
 }

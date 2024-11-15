@@ -11,6 +11,7 @@ public class ArrayDemo {
         int[] array4 = {5, 20, 12, 20, 8};
         int[] array5 = {10, 5, 7, 30};
         int[] array6 = {5, 20, 30, 80};
+        int[] array7 = {1, 2, 3, 5, 6};
 
         //get largest from array
         System.out.println(arrayDemo.getLargest(array1));
@@ -30,6 +31,11 @@ public class ArrayDemo {
         //check if array is ascending
         System.out.println(arrayDemo.isAscending(array1));
         System.out.println(arrayDemo.isAscending(array6));
+
+//        Left rotate array by 1
+        System.out.println(Arrays.toString(array7));
+        arrayDemo.lrotateOne(array7);
+        System.out.println(Arrays.toString(array7));
 
 
     }
@@ -93,5 +99,15 @@ public class ArrayDemo {
             start++;
             end--;
         }
+    }
+
+    public void lrotateOne(int[] array) {
+        //{1,2,3,4,5} input
+        //{2,3,4,5,1} output
+        int temp = array[0];
+        for (int i = 1; i < array.length; i++) {
+            array[i - 1] = array[i];
+        }
+        array[array.length - 1] = temp;
     }
 }

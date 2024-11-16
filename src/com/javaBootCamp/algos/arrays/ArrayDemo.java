@@ -12,8 +12,9 @@ public class ArrayDemo {
         int[] array5 = {10, 5, 7, 30};
         int[] array6 = {5, 20, 30, 80};
         int[] array7 = {1, 2, 3, 5, 6};
-        int[] array8 = {2, 3, 0, 5, 0, 0, 0, 6, 8, 0};
+        int[] array8 = {2, 3, 0, 5, 0, 0, 0, 6, 8, 0, 6};
         int[] array9 = {7, 10, 4, 3, 10, 6, 5, 2};
+        int[] array10 = {10, 10, 10, 25, 30, 30, 45, 45};
 
 
         //get largest from array
@@ -57,6 +58,9 @@ public class ArrayDemo {
         // getSum
         int result = arrayDemo.getSum(array9, 2, 6);
         System.out.println(result);
+
+//        print the frequency of elements
+        arrayDemo.printFrequency(array10);
 
 
     }
@@ -192,5 +196,23 @@ public class ArrayDemo {
             return presum[end] - presum[start - 1];
         }
 
+    }
+
+    public void printFrequency(int[] array) {
+//        {10,10,10,30,30,40}
+        int index = 1, freq = 1, length = array.length;
+        while (index < length) {
+            while (index < length && array[index - 1] == array[index]) {
+                freq++;
+                index++;
+            }
+            System.out.println(array[index - 1] + " : " + freq);
+            index++;
+            freq = 1;
+        }
+        if (length == 1 || array[length - 2] != array[length - 1]) {
+            System.out.println(array[length - 1] + " : " + freq);
+
+        }
     }
 }

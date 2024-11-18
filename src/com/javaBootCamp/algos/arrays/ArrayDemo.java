@@ -18,6 +18,7 @@ public class ArrayDemo {
         int[] array11 = {0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1};
         int[] array12 = {2, 3, 10, 6, 4, 8, 1};
         int[] array13 = {-3, 8, -2, 4, -5, 6};
+        int[] array14 = {3, 4, 8, -9, 9, 7};
 
 
         //get largest from array
@@ -74,6 +75,9 @@ public class ArrayDemo {
 
         //        Maximum sum subarray
         System.out.println("Max Sum Subarray: " + arrayDemo.maxSumSubarray(array13));
+
+        //        Equlibrium point
+        System.out.println("Is equlibrium point " + arrayDemo.equlibriumPoint(array14));
     }
 
     public int getLargest(int[] array) {
@@ -276,16 +280,17 @@ public class ArrayDemo {
     }
 
     public boolean equlibriumPoint(int[] array) {
+        int rSum = 0;
         for (int i = 0; i < array.length; i++) {
-            int lSum = 0;
-            int rSum = 0;
-            for (int j = i - 1; j >= 0; j--) {
-                lSum += array[j];
+            rSum += array[i];
+        }
+        int lSum = 0;
+        for (int i = 0; i < array.length; i++) {
+            rSum -= array[i];
+            if (lSum == rSum) {
+                return true;
             }
-            for (int j = i + 1; j < array.length; j++) {
-                rSum += array[j];
-            }
-            return lSum == rSum;
+            lSum += array[i];
         }
         return false;
     }

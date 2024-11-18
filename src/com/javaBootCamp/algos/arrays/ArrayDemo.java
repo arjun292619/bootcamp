@@ -17,6 +17,7 @@ public class ArrayDemo {
         int[] array10 = {10, 10, 10, 25, 30, 30, 45, 45};
         int[] array11 = {0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1};
         int[] array12 = {2, 3, 10, 6, 4, 8, 1};
+        int[] array13 = {-3, 8, -2, 4, -5, 6};
 
 
         //get largest from array
@@ -71,7 +72,8 @@ public class ArrayDemo {
         //        Maximum difference in order
         System.out.println("Max Difference: " + arrayDemo.maxDiff(array12));
 
-
+        //        Maximum sum subarray
+        System.out.println("Max Sum Subarray: " + arrayDemo.maxSumSubarray(array13));
     }
 
     public int getLargest(int[] array) {
@@ -261,5 +263,15 @@ public class ArrayDemo {
             minVal = Math.min(minVal, array[i]);
         }
         return maxD;
+    }
+
+    public int maxSumSubarray(int[] array) {
+        int maxSubSum = array[0];
+        int globalMax = array[0];
+        for (int i = 0; i < array.length; i++) {
+            maxSubSum = Math.max(array[i], maxSubSum + array[i]);
+            globalMax = Math.max(maxSubSum, globalMax);
+        }
+        return globalMax;
     }
 }

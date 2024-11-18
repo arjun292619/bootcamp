@@ -12,6 +12,9 @@ public class ArrayDemo {
         int[] array9 = {7, 10, 4, 3, 10, 6, 5, 2};
         int[] array10 = {0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1};
         int[] array12 = {2, 3, 10, 6, 4, 8, 1};
+        int[] array13 = {-3, 8, -2, 4, -5, 6};
+
+
         System.out.println(arrayDemo.getLargest(array1));
         System.out.println(arrayDemo.getLargest(array2));
 
@@ -42,6 +45,9 @@ public class ArrayDemo {
 
 //        Maximum difference in order
         System.out.println("Max Difference: " + arrayDemo.maxDiff(array12));
+
+        //        Maximum Sum subarray
+        System.out.println("Max Sum subarray: " + arrayDemo.maxSumSubarray(array12));
 
     }
 
@@ -163,5 +169,18 @@ public class ArrayDemo {
             }
         }
         return maxDifference;
+    }
+
+    public int maxSumSubarray(int[] array) {
+//        {1,-2,3,-1,2}
+        int maxSum = array[0];
+        for (int i = 0; i < array.length; i++) {
+            int sum = 0;
+            for (int j = i; j < array.length; j++) {
+                sum += array[j];
+                maxSum = Math.max(maxSum, sum);
+            }
+        }
+        return maxSum;
     }
 }

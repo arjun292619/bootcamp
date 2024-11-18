@@ -15,6 +15,7 @@ public class ArrayDemo {
         int[] array8 = {2, 3, 0, 5, 0, 0, 0, 6, 8, 0, 6};
         int[] array9 = {7, 10, 4, 3, 10, 6, 5, 2};
         int[] array10 = {10, 10, 10, 25, 30, 30, 45, 45};
+        int[] array11 = {0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1};
 
 
         //get largest from array
@@ -61,6 +62,10 @@ public class ArrayDemo {
 
 //        print the frequency of elements
         arrayDemo.printFrequency(array10);
+
+        //        Maximum consecutive ones
+        int max1s = arrayDemo.maxConsecutiveOnes(array11);
+        System.out.println(max1s);
 
 
     }
@@ -214,5 +219,19 @@ public class ArrayDemo {
             System.out.println(array[length - 1] + " : " + freq);
 
         }
+    }
+
+    public int maxConsecutiveOnes(int[] array) {
+        //        {0,1,1,0,1,1,1}
+        int maxCount = 0, count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == 0) {
+                count = 0;
+            } else {
+                count++;
+                maxCount = Math.max(count, maxCount);
+            }
+        }
+        return maxCount;
     }
 }

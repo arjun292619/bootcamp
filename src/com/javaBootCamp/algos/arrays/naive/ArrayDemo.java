@@ -10,6 +10,7 @@ public class ArrayDemo {
         int[] array3 = {5, 20, 30, 80};
         int[] array7 = {1, 2, 3, 5, 6};
         int[] array9 = {7, 10, 4, 3, 10, 6, 5, 2};
+        int[] array10 = {0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1};
         System.out.println(arrayDemo.getLargest(array1));
         System.out.println(arrayDemo.getLargest(array2));
 
@@ -33,6 +34,11 @@ public class ArrayDemo {
 
         int result = arrayDemo.getSum(array9, 2, 6);
         System.out.println(result);
+
+//        Maximum consecutive ones
+        int max1s = arrayDemo.maxConsecutiveOnes(array10);
+        System.out.println(max1s);
+
     }
 
     public int getLargest(int[] array) {
@@ -111,5 +117,22 @@ public class ArrayDemo {
             sum += array[i];
         }
         return sum;
+    }
+
+    public int maxConsecutiveOnes(int[] array) {
+//        {0,1,1,0,1,1,1}
+        int res = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            int count = 0;
+            for (int j = i; j < array.length; j++) {
+                if (array[j] == 1) {
+                    count++;
+                } else {
+                    break;
+                }
+            }
+            res = Math.max(res, count);
+        }
+        return res;
     }
 }

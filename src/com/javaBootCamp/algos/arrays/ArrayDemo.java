@@ -274,4 +274,19 @@ public class ArrayDemo {
         }
         return globalMax;
     }
+
+    public boolean equlibriumPoint(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            int lSum = 0;
+            int rSum = 0;
+            for (int j = i - 1; j >= 0; j--) {
+                lSum += array[j];
+            }
+            for (int j = i + 1; j < array.length; j++) {
+                rSum += array[j];
+            }
+            return lSum == rSum;
+        }
+        return false;
+    }
 }

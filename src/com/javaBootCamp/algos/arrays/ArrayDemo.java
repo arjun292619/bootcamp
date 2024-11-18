@@ -16,6 +16,7 @@ public class ArrayDemo {
         int[] array9 = {7, 10, 4, 3, 10, 6, 5, 2};
         int[] array10 = {10, 10, 10, 25, 30, 30, 45, 45};
         int[] array11 = {0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1};
+        int[] array12 = {2, 3, 10, 6, 4, 8, 1};
 
 
         //get largest from array
@@ -66,6 +67,9 @@ public class ArrayDemo {
         //        Maximum consecutive ones
         int max1s = arrayDemo.maxConsecutiveOnes(array11);
         System.out.println(max1s);
+
+        //        Maximum difference in order
+        System.out.println("Max Difference: " + arrayDemo.maxDiff(array12));
 
 
     }
@@ -246,5 +250,16 @@ public class ArrayDemo {
             maxSum = Math.max(currentSum, maxSum);
         }
         return maxSum;
+    }
+
+    public int maxDiff(int[] array) {
+        //        {2,3,10,6,4,8,1}
+        int minVal = array[0];
+        int maxD = array[1] - array[0];
+        for (int i = 0; i < array.length; i++) {
+            maxD = Math.max(maxD, array[i] - minVal);
+            minVal = Math.min(minVal, array[i]);
+        }
+        return maxD;
     }
 }

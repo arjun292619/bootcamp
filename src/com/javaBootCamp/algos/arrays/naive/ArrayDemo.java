@@ -135,4 +135,7 @@ public class ArrayDemo {
         }
         return res;
     }
+
+    public int maxKsum(int[] array, int k) {
+    }
 }

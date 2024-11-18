@@ -234,4 +234,17 @@ public class ArrayDemo {
         }
         return maxCount;
     }
+
+    public int maxKsum(int[] array, int k) {
+        int currentSum = 0;
+        for (int i = 0; i < k; i++) {
+            currentSum += array[i];
+        }
+        int maxSum = currentSum;
+        for (int i = k; i < array.length; i++) {
+            currentSum = currentSum + array[i] - array[i - k];
+            maxSum = Math.max(currentSum, maxSum);
+        }
+        return maxSum;
+    }
 }

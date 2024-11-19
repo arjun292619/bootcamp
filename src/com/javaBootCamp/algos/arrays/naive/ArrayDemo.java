@@ -203,4 +203,17 @@ public class ArrayDemo {
         }
         return false;
     }
+
+    public boolean isSubarraySum(int[] array, int target) {
+        for (int i = 0; i < array.length; i++) {
+            int sum = 0;
+            for (int j = i; j < array.length; j++) {
+                sum += array[j];
+                if (sum == target) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

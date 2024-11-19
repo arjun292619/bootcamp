@@ -294,4 +294,19 @@ public class ArrayDemo {
         }
         return false;
     }
+
+    public boolean isSubarraySum(int[] array, int target) {
+        int start = 0, windowSum = 0;
+        for (int end = 0; end < array.length; end++) {
+            windowSum += array[end];
+            while (windowSum > target) {
+                windowSum -= array[start];
+                start++;
+            }
+            if (windowSum == target) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

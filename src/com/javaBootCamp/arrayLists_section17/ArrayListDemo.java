@@ -1,8 +1,6 @@
 package com.javaBootCamp.arrayLists_section17;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class ArrayListDemo {
     public static void main(String[] args) {
@@ -39,11 +37,41 @@ public class ArrayListDemo {
         System.out.println(reversed);
 
 //        clearing the arraylist
-        countries.clear();
+//        countries.clear();
+//        System.out.println(countries);
+
+//        Iteraring the lists
+        System.out.println("Iterating with advanced for each loop");
+        for (String country : countries) {
+            System.out.println(country);
+        }
+
+        System.out.println("Iterating with regular for each loop");
+        for (int i = 0; i < countries.size(); i++) {
+            System.out.println(i + ". " + countries.get(i));
+        }
+
+        System.out.println("Iterating with Iterator");
+        Iterator<String> countryIterator = countries.iterator();
+        while (countryIterator.hasNext()) {
+            String name = countryIterator.next();
+            System.out.println(name);
+            if (name.equalsIgnoreCase("Mexico")) {
+                countryIterator.remove();
+            }
+        }
         System.out.println(countries);
 
-//        Immutable Lists
 
+        System.out.println("Iterating forwards with ListIterator");
+        ListIterator<String> listIterator = countries.listIterator();
+        while (listIterator.hasNext()) {
+            System.out.println(listIterator.next());
+        }
+        System.out.println("Iterating backwards with ListIterator");
+        while (listIterator.hasPrevious()) {
+            System.out.println(listIterator.previous());
+        }
 
 
     }

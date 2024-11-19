@@ -42,6 +42,9 @@ public class ArrayListDemo {
         countries.clear();
         System.out.println(countries);
 
+//        Immutable Lists
+
+
 
     }
 }

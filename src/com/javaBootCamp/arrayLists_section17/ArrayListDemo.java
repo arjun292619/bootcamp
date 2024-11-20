@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ArrayListDemo {
     public static void main(String[] args) {
-        ArrayList<Integer> nums = new ArrayList<>();
+        ArrayList<Integer> nums = new ArrayList<>(List.of(67, 34, 68, 90, 12, -2, 45, -54, 23, 86, 23, 79, 100, 34, -65, -87, 59, 75));
         List<Character> characters = new ArrayList<>();
         List<String> countries = new ArrayList<>();
         var doubles = new ArrayList<Double>();
@@ -72,6 +72,22 @@ public class ArrayListDemo {
         while (listIterator.hasPrevious()) {
             System.out.println(listIterator.previous());
         }
+
+//        Sorting the data in array lists
+        System.out.println("before sorting");
+        System.out.println(nums);
+        System.out.println("After sorting-Ascending");
+        Collections.sort(nums);
+        System.out.println(nums);
+        System.out.println("After sorting-Descending");
+        Collections.sort(nums, Comparator.reverseOrder());
+        System.out.println(nums);
+
+        System.out.println("before sorting Countries");
+        System.out.println(countries);
+        System.out.println("After sorting Countries");
+        countries.sort(Comparator.naturalOrder());
+        System.out.println(countries);
 
 
     }

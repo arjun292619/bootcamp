@@ -15,6 +15,8 @@ public class ArrayListDemo {
         countries.add("Germany");
         countries.add("India");
         countries.add("Mexico");
+        countries.add("Denmark");
+        countries.add("Belgium");
         countries.add("UK");
         System.out.println(countries);
         countries.add(2, "France");
@@ -87,6 +89,10 @@ public class ArrayListDemo {
         System.out.println(countries);
         System.out.println("After sorting Countries");
         countries.sort(Comparator.naturalOrder());
+        System.out.println(countries);
+
+//        using custom comparator
+        countries.sort(new LastCharComparator());
         System.out.println(countries);
 
 

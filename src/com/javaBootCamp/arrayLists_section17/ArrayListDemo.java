@@ -95,6 +95,25 @@ public class ArrayListDemo {
         countries.sort(new LastCharComparator());
         System.out.println(countries);
 
+//        custom comparable on custom data
+
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(new Student("Mark", 125678, 120));
+        students.add(new Student("Derek", 245674, 110));
+        students.add(new Student("Tony", 355679, 135));
+        students.add(new Student("Natasha", 465668, 124));
+        students.add(new Student("Jeremy", 575973, 112));
+        students.add(new Student("Bruce", 585063, 122));
+        students.add(new Student("Bruce", 585062, 122));
+        students.add(new Student("Alfred", 684271, 102));
+        students.add(new Student("Clark", 692953, 132));
+//        Students before sorting
+        System.out.println(students);
+//        Students after sorting
+        Collections.sort(students);
+        System.out.println(students);
+        students.sort(new StudentComparator());
+        System.out.println(students);
 
     }
 }

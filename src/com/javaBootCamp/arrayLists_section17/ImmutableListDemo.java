@@ -1,7 +1,6 @@
 package com.javaBootCamp.arrayLists_section17;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ImmutableListDemo {

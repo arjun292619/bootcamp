@@ -1,7 +1,9 @@
 package com.javaBootCamp.hashmap_section20;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class HashmapDemo {
     public static void main(String[] args) {
@@ -12,7 +14,12 @@ public class HashmapDemo {
         countriesMap.put("USA", "London");
         countriesMap.put("China", "Beijing");
         countriesMap.put("Japan", "Tokyo");
-        countriesMap.put("Germany", "Berlin");
+        countriesMap.put("Italy", "Rome");
+        countriesMap.put("Netherlands", "Amsterdam");
+        countriesMap.put("Singapore", "Singapore");
+        countriesMap.put("Australia", "Canberra");
+        countriesMap.put("New Zealand", "Wellington");
+        countriesMap.put("Egypt", "Cairo");
         countriesMap.put(null, null);
 // print the map
         System.out.println(countriesMap);
@@ -22,7 +29,26 @@ public class HashmapDemo {
         System.out.println(countriesMap.get("USA"));
         countriesMap.remove(null);
         System.out.println(countriesMap.size());
-        System.out.println();
 
+
+//        Iterating a hashmap
+        System.out.println("Iterating with keyset");
+        Set<String> keys = countriesMap.keySet();
+
+        for (String country : keys) {
+            System.out.println(country + ":" + countriesMap.get(country));
+        }
+
+        System.out.println("Iterating with Entryset");
+        Set<Map.Entry<String, String>> entries = countriesMap.entrySet();
+        Iterator<Map.Entry<String, String>> mapIterator = entries.iterator();
+
+        System.out.println("Using iterator to iterate a map & entry set");
+        while (mapIterator.hasNext()) {
+            Map.Entry<String, String> entry = mapIterator.next();
+            String key = entry.getKey();
+            String value = entry.getValue();
+            System.out.println(key + " :- " + value);
+        }
     }
 }

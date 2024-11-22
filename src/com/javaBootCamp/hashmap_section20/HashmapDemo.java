@@ -91,5 +91,6 @@ public class HashmapDemo {
 
         var reversedMap = linkedMapper.reversed();
         System.out.println(reversedMap);
+
     }
 }

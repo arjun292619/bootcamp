@@ -52,5 +52,23 @@ public class HashmapDemo {
         for (String value : valueSet) {
             System.out.println(value);
         }
+
+        Map<Integer, String> numberMapper = new TreeMap<>();
+        numberMapper.put(13, "thirteen");
+        numberMapper.put(19, "ninteen");
+        numberMapper.put(27, "twentty seven");
+        numberMapper.put(3, "three");
+        numberMapper.put(48, "forty eight");
+        numberMapper.put(1, "one");
+        numberMapper.put(17, "seventeen");
+        numberMapper.put(33, "thirty three");
+        numberMapper.put(50, "fifty");
+        numberMapper.put(20, "twenty");
+
+        System.out.println(numberMapper);
+
+        for (Integer key : numberMapper.keySet()) {
+            System.out.println(key + " : " + numberMapper.get(key));
+        }
     }
 }

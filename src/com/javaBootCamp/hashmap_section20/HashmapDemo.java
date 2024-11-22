@@ -1,9 +1,6 @@
 package com.javaBootCamp.hashmap_section20;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class HashmapDemo {
     public static void main(String[] args) {
@@ -43,12 +40,17 @@ public class HashmapDemo {
         Set<Map.Entry<String, String>> entries = countriesMap.entrySet();
         Iterator<Map.Entry<String, String>> mapIterator = entries.iterator();
 
-        System.out.println("Using iterator to iterate a map & entry set");
+        System.out.println("\nUsing iterator to iterate a map & entry set");
         while (mapIterator.hasNext()) {
             Map.Entry<String, String> entry = mapIterator.next();
             String key = entry.getKey();
             String value = entry.getValue();
             System.out.println(key + " :- " + value);
+        }
+        System.out.println("\nUsing values to iterate");
+        Collection<String> valueSet = countriesMap.values();
+        for (String value : valueSet) {
+            System.out.println(value);
         }
     }
 }

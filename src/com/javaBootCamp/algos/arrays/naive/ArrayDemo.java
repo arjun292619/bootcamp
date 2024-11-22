@@ -14,6 +14,7 @@ public class ArrayDemo {
         int[] array12 = {2, 3, 10, 6, 4, 8, 1};
         int[] array13 = {-3, 8, -2, 4, -5, 6};
         int[] array14 = {3, 4, 8, -9, 9, 7};
+        int[] array15 = {5, 10, 20, 6, 3, 8};
 
 
         System.out.println(arrayDemo.getLargest(array1));
@@ -52,6 +53,9 @@ public class ArrayDemo {
 
         //        Equlibrium point
         System.out.println("Is equlibrium point " + arrayDemo.equlibriumPoint(array14));
+
+        //        Maximum length of even odd subbarray
+        System.out.println("Max Even Odd subarray: " + arrayDemo.maxEvenOddLength(array15));
 
     }
 
@@ -215,5 +219,22 @@ public class ArrayDemo {
             }
         }
         return false;
+    }
+
+    public int maxEvenOddLength(int[] array) {
+//        {5,10,20,6,3,8}
+        int maxLength = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            int count = 1;
+            for (int j = i + 1; j < array.length; j++) {
+                if ((array[j] % 2 == 0 && array[j - 1] % 2 != 0) || (array[j] % 2 != 0 && array[j - 1] % 2 == 0)) {
+                    count++;
+                } else {
+                    break;
+                }
+            }
+            maxLength = Math.max(maxLength, count++);
+        }
+        return maxLength;
     }
 }

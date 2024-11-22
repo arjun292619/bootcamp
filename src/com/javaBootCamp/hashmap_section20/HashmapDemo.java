@@ -70,5 +70,26 @@ public class HashmapDemo {
         for (Integer key : numberMapper.keySet()) {
             System.out.println(key + " : " + numberMapper.get(key));
         }
+
+        LinkedHashMap<Integer, String> linkedMapper = new LinkedHashMap<>();
+        linkedMapper.put(13, "thirteen");
+        linkedMapper.put(19, "ninteen");
+        linkedMapper.put(27, "twentty seven");
+        linkedMapper.put(3, "three");
+        linkedMapper.put(48, "forty eight");
+        linkedMapper.put(1, "one");
+        linkedMapper.put(17, "seventeen");
+        linkedMapper.put(33, "thirty three");
+        linkedMapper.put(50, "fifty");
+        linkedMapper.put(20, "twenty");
+
+        System.out.println(linkedMapper);
+
+        for (Map.Entry<Integer, String> entry : linkedMapper.entrySet()) {
+            System.out.println(entry.getKey() + ":-" + entry.getValue());
+        }
+
+        var reversedMap = linkedMapper.reversed();
+        System.out.println(reversedMap);
     }
 }

@@ -29,7 +29,8 @@ public class HashSetDemo {
         while (iterator.hasNext()) {
             String country = iterator.next();
             System.out.println(country.toUpperCase());
-            if (country.contains("u")) {
+//            if (country.contains("u")) {
+            if (country.matches("a")) {
                 iterator.remove();
             }
         }

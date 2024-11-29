@@ -2,6 +2,7 @@ package com.javaBootCamp.hashSet_section21;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class HashSetDemo {
@@ -36,6 +37,14 @@ public class HashSetDemo {
         }
 
         System.out.println(visitedCountries);
+
+        Set<String> linkedSet = new LinkedHashSet<>();
+        linkedSet.add("Pizza");
+        linkedSet.add("HotDog");
+        linkedSet.add("Burger");
+        linkedSet.add("Fries");
+        System.out.println(linkedSet);
+
 
     }
 }

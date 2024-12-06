@@ -23,7 +23,7 @@ public class StreamIntermediateOperations {
         System.out.println(evenSums);
         System.out.println("-".repeat(30));
 
-        List<String> departmentList = new ArrayList<>(List.of("accounting", "hr", "supply", "logistics", "it", "retail", "inventory"));
+        List<String> departmentList = new ArrayList<>(List.of("accounting", "hr", "supply", "logistics", "it", "retail", "inventory", "sales"));
         System.out.println(sumOfNumbers);
         System.out.println("-".repeat(30));
 
@@ -68,5 +68,10 @@ public class StreamIntermediateOperations {
 //        skip method
         List<Integer> skippedIntList = Stream.iterate(1, val -> (val + 5) * 10).skip(3).limit(5).toList();
         System.out.println(skippedIntList);
+        System.out.println("-".repeat(30));
+
+        List<String> sDepts = departmentList.stream().filter(dept -> dept.startsWith("s")).collect(Collectors.toList());
+        System.out.println(sDepts);
+        System.out.println("-".repeat(30));
     }
 }

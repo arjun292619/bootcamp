@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -59,5 +60,13 @@ public class StreamIntermediateOperations {
         System.out.println(filteredList);
         System.out.println("-".repeat(30));
 
+//        limit method
+        List<Integer> filteredIntStream = Stream.generate(new Random()::nextInt).filter(val -> val > 0 && val < 99).limit(15).toList();
+        System.out.println(filteredIntStream);
+        System.out.println("-".repeat(30));
+
+//        skip method
+        List<Integer> skippedIntList = Stream.iterate(1, val -> (val + 5) * 10).skip(3).limit(5).toList();
+        System.out.println(skippedIntList);
     }
 }

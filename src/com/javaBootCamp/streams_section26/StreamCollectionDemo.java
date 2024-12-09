@@ -1,9 +1,6 @@
 package com.javaBootCamp.streams_section26;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StreamCollectionDemo {
@@ -32,6 +29,9 @@ public class StreamCollectionDemo {
         Map<String, Person> wealthyMapper = persons.stream().filter(person -> person.income() > 500000).collect(Collectors.toMap(Person::name, person -> person));
         System.out.println(wealthyMapper);
         System.out.println("-".repeat(30));
+
+        var pocList = persons.stream().filter(person -> person.phoneNumbers().size() > 3).collect(Collectors.toCollection(LinkedList::new));
+        System.out.println(pocList);
 
     }
 }

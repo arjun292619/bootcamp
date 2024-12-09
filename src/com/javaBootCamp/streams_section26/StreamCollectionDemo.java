@@ -36,24 +36,31 @@ public class StreamCollectionDemo {
         System.out.println(pocList);
         System.out.println("-".repeat(30));
 
-        var maxProduct = products.stream().collect(Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Product::price)), optionaProduct -> optionaProduct.isPresent() ? optionaProduct.get().name() : "None"));
+        var maxProduct = products.stream().collect(Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Product::price)), optionaProduct -> optionaProduct.isPresent() ? optionaProduct.get().product() : "None"));
         System.out.println(maxProduct);
         System.out.println("-".repeat(30));
 
-        var minProduct = products.stream().collect(Collectors.collectingAndThen(Collectors.minBy(Comparator.comparing(Product::price)), optionaProduct -> optionaProduct.isPresent() ? optionaProduct.get().name() : "None"));
+        var minProduct = products.stream().collect(Collectors.collectingAndThen(Collectors.minBy(Comparator.comparing(Product::price)), optionaProduct -> optionaProduct.isPresent() ? optionaProduct.get().product() : "None"));
         System.out.println(minProduct);
         System.out.println("-".repeat(30));
+
+        var groupedProducts = products.stream().collect(Collectors.groupingBy(Product::brand));
+        System.out.println(groupedProducts);
+
+        var partitionedProducts = products.stream().collect(Collectors.partitioningBy(product -> product.price() > 2000));
+        System.out.println(partitionedProducts);
     }
 
     private static List<Product> getProducts() {
         return List.of(
-                new Product("Apple Iphone", 1299),
-                new Product("Samsung galaxy", 1199),
-                new Product("Sony PS5", 699),
-                new Product("Xbox XS", 599),
-                new Product("Samsung TV", 2299),
-                new Product("Dyson Vaccum", 799),
-                new Product("Sony alpha Camera", 3399)
+                new Product("Apple", "Apple Iphone", 1299),
+                new Product("Apple", "Apple macbook", 3499),
+                new Product("Samsung", "Samsung galaxy", 1199),
+                new Product("Sony", "Sony PS5", 699),
+                new Product("Microsoft", "Xbox XS", 599),
+                new Product("Samsung", "Samsung TV", 2299),
+                new Product("Dyson", "Dyson Vaccum", 799),
+                new Product("Sony", "Sony alpha Camera", 3399)
         );
     }
 }

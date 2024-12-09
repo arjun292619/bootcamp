@@ -15,6 +15,8 @@ public class StreamCollectionDemo {
                 new Person("Elizabeth", "liz@email.com", List.of("824", "639", "956", "888", "669", "359"), 656189)
         ));
 
+        List<Product> products = getProducts();
+
         List<String> departmentList = new ArrayList<>(List.of("accounting", "hr", "supply", "logistics", "it", "retail", "inventory", "sales"));
 
         List<String> rDepts = departmentList.stream().filter(dept -> dept.contains("r")).collect(Collectors.toList());
@@ -32,6 +34,26 @@ public class StreamCollectionDemo {
 
         var pocList = persons.stream().filter(person -> person.phoneNumbers().size() > 3).collect(Collectors.toCollection(LinkedList::new));
         System.out.println(pocList);
+        System.out.println("-".repeat(30));
 
+        var maxProduct = products.stream().collect(Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Product::price)), optionaProduct -> optionaProduct.isPresent() ? optionaProduct.get().name() : "None"));
+        System.out.println(maxProduct);
+        System.out.println("-".repeat(30));
+
+        var minProduct = products.stream().collect(Collectors.collectingAndThen(Collectors.minBy(Comparator.comparing(Product::price)), optionaProduct -> optionaProduct.isPresent() ? optionaProduct.get().name() : "None"));
+        System.out.println(minProduct);
+        System.out.println("-".repeat(30));
+    }
+
+    private static List<Product> getProducts() {
+        return List.of(
+                new Product("Apple Iphone", 1299),
+                new Product("Samsung galaxy", 1199),
+                new Product("Sony PS5", 699),
+                new Product("Xbox XS", 599),
+                new Product("Samsung TV", 2299),
+                new Product("Dyson Vaccum", 799),
+                new Product("Sony alpha Camera", 3399)
+        );
     }
 }

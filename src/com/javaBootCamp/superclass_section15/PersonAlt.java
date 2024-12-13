@@ -45,13 +45,4 @@ public class PersonAlt {
         this.ssn = ssn;
     }
 
-    @Override
-    public String toString() {
-        return "PersonAlt{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", gender=" + gender +
-                ", ssn=" + ssn +
-                '}';
-    }
 }

@@ -35,6 +35,20 @@ public class SuperClassDemo {
         System.out.println("Without implementing toString: " + p1);
         System.out.println("implementing toString: " + p3);
 
+        Person johnDoe = new Person("John Doe", 42, 'M', 1324984L);
+        System.out.println("Before change: " + johnDoe);
+        Person johnDupe = johnDoe;
+        System.out.println(johnDoe == johnDupe);
+        johnDupe.setName("John Andrews");
+        System.out.println("After change: " + johnDoe);
+
+        Person clarkKent = new Person("Clark Kent", 42, 'M', 1324984L);
+        System.out.println("Before change: " + clarkKent);
+        Person clarkDup = clarkKent.clone();
+        System.out.println(clarkKent == clarkDup);
+        clarkDup.setName("Clark Smallville");
+        System.out.println("After change: " + clarkKent);
+
 
     }
 }

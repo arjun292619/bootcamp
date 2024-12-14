@@ -2,7 +2,7 @@ package com.javaBootCamp.superclass_section15;
 
 import java.util.Objects;
 
-public class Person {
+public class Person implements Cloneable{
     private String name;
     private int age;
     private char gender;
@@ -68,5 +68,16 @@ public class Person {
                 ", gender=" + gender +
                 ", ssn=" + ssn +
                 '}';
+    }
+
+    @Override
+    public Person clone() {
+        try {
+            Person clone = (Person) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

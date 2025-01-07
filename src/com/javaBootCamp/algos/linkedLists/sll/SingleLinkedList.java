@@ -44,5 +44,6 @@ public class SingleLinkedList {
     public SingleLinkedList() {
         this.head = null;
         this.tail = null;
+        size = 0;
     }
 }

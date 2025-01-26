@@ -25,7 +25,7 @@ public class Trie {
         int length = key.length();
         for (int i = 0; i < length; i++) {
             int index = key.charAt(i) - 'a';
-            if (root.children[index] == null) {
+            if (current.children[index] == null) {
                 return false;
             }
             current = current.children[index];

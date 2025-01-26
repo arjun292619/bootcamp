@@ -13,7 +13,7 @@ public class TrieDemo {
 
         // Input keys (use only 'a' through 'z' and lower case)
         String keys[] = {"the", "a", "there", "answer", "any",
-                "by", "bye", "their", "zebra"};
+                "by", "bye", "their", "zebra", "zoo"};
 
         // Construct trie
         for (int i = 0; i < keys.length; i++) {
@@ -26,6 +26,9 @@ public class TrieDemo {
         System.out.println(root.search("bye"));
         System.out.println(root.search("there"));
         System.out.println(root.search("these"));
+        System.out.println(root.search("zoo"));
+        root.delete("zoo");
+        System.out.println(root.search("zoo"));
 
 
     }

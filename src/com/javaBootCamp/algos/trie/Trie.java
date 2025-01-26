@@ -32,4 +32,36 @@ public class Trie {
         }
         return current.isEnd;
     }
+
+    public boolean hasChildNode(TrieNode node) {
+        for (int i = 0; i < node.children.length; i++) {
+            if (node.children[i] != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public TrieNode recurDelete(TrieNode root, String key, int index) {
+        if (root == null) return null;
+
+        if (index == key.length()) {
+            root.isEnd = false;
+            if (!hasChildNode(root)) {
+                root = null;
+            }
+            return root;
+        }
+
+        int i = key.charAt(index) - 'a';
+        root.children[i] = recurDelete(root.children[i], key, index + 1);
+        if (!hasChildNode(root) && !root.isEnd) {
+            root = null;
+        }
+        return root;
+    }
+
+    public void delete(String key) {
+        recurDelete(root, key, 0);
+    }
 }

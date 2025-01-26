@@ -30,6 +30,19 @@ public class TrieDemo {
         root.delete("zoo");
         System.out.println(root.search("zoo"));
 
+        System.out.println("-".repeat(30));
+        Trie root1 = new Trie();
+        root1.insert("hello");
+        root1.insert("dog");
+        root1.insert("hell");
+        root1.insert("cat");
+        root1.insert("a");
+        root1.insert("hel");
+        root1.insert("help");
+        root1.insert("helps");
+        root1.insert("helping");
+        int comp = root1.printAutoSuggestions("hel");
+
 
     }
 }

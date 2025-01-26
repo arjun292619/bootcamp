@@ -5,6 +5,9 @@ public class TrieNode {
     public TrieNode[] children = new TrieNode[DEFAULT_SIZE];
     public boolean isEnd;
 
+    public static int getDefaultSize() {
+        return DEFAULT_SIZE;
+    }
 //    public TrieNode(int[] children, boolean isEnd) {
 //        this.children = children;
 //        this.isEnd = isEnd;

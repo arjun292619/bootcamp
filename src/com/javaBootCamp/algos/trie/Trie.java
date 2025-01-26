@@ -64,4 +64,43 @@ public class Trie {
     public void delete(String key) {
         recurDelete(root, key, 0);
     }
+
+    public void recursiveSuggest(TrieNode root, String prefix) {
+        if (root.isEnd) {
+            System.out.println(prefix);
+        }
+        if (!hasChildNode(root)) return;
+        for (int i = 0; i < TrieNode.getDefaultSize(); i++) {
+            if (root.children[i] != null) {
+                prefix += (char) (97 + i);
+                recursiveSuggest(root.children[i], prefix);
+            }
+        }
+
+    }
+
+    public int printAutoSuggestions(String query) {
+        TrieNode current = root;
+        for (int i = 0; i < query.length(); i++) {
+            int index = query.charAt(i) - 'a';
+            if (current.children[index] == null) {
+                return 0;
+            }
+            current = current.children[index];
+        }
+        boolean isEndofWord = current.isEnd;
+        boolean hasChildren = hasChildNode(current);
+
+        if (isEndofWord && !hasChildren) {
+            System.out.println(query);
+            return -1;
+        }
+        if (hasChildren) {
+            String prefix = query;
+            recursiveSuggest(current, prefix);
+            return 1;
+        }
+        return 0;
+
+    }
 }

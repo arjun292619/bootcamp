@@ -20,7 +20,7 @@ public class BigDecimalDemo {
         System.out.printf("totalDifferential with float = %.2f%n", totalDifferentialFloat);
         System.out.printf("totalDifferential with double = %.2f%n", totalDifferentialDbl);
 
-        String[] decimalString = {"15.456", "8", "10000.000001", ".123896"};
+        String[] decimalString = {"15.456", "8", "10000.000001", ".126896"};
         Double[] decimallDbl = {15.456, 8d, 10000.000001, .123896};
         BigDecimal[] bigDArray = new BigDecimal[decimalString.length];
         Arrays.setAll(bigDArray, i -> new BigDecimal(decimalString[i]));
@@ -42,8 +42,21 @@ public class BigDecimalDemo {
         System.out.printf("%15s %-15d %8d %d %n", testVal2, testVal2.unscaledValue(), testVal2.scale(), testVal2.precision());
         System.out.println("-".repeat(50));
         for (BigDecimal bd : bigDArray) {
-            bd.setScale(2);
+            bd = bd.setScale(2, RoundingMode.HALF_UP);
             System.out.printf("%15s %-15d %8d %d %n", bd, bd.unscaledValue(), bd.scale(), bd.precision());
         }
+
+        System.out.println("-".repeat(50));
+        BigDecimal policyPayout = new BigDecimal("100000000");
+        System.out.printf("%15s %-15d %8d %d %n", policyPayout, policyPayout.unscaledValue(), policyPayout.scale(), policyPayout.precision());
+        BigDecimal bdPercent = BigDecimal.ONE.divide(BigDecimal.valueOf(beneficiaries),MathContext.DECIMAL64);
+        System.out.println(bdPercent);
+
+        BigDecimal perPay = policyPayout.multiply(bdPercent);
+        System.out.println(perPay);
+
+        BigDecimal differential = policyPayout.subtract(perPay.multiply(BigDecimal.valueOf(beneficiaries)));
+        differential = differential.setScale(7,RoundingMode.HALF_UP);
+        System.out.printf("%15s %-15d %8d %d %n", differential, differential.unscaledValue(), differential.scale(), differential.precision());
     }
 }

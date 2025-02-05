@@ -1,6 +1,8 @@
 package com.javaBootCamp.nutsNBolts.bigdecimal;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Arrays;
 
 public class BigDecimalDemo {
@@ -25,11 +27,7 @@ public class BigDecimalDemo {
         BigDecimal[] bigDbls = new BigDecimal[decimalString.length];
         Arrays.setAll(bigDbls, i -> BigDecimal.valueOf(decimallDbl[i]));
         System.out.printf("%14s %-15s %8s %s%n", "Value", "Unscaled value", "Scale", "Precision");
-//        String template = String.format("%15s %-15d %8d %d %n" );
-        System.out.println("-".repeat(50));
-        for (BigDecimal bd : bigDArray) {
-            System.out.printf("%15s %-15d %8d %d %n", bd, bd.unscaledValue(), bd.scale(), bd.precision());
-        }
+//        String template = String.format("%15s %-15d %8d %d %n" )
 
         System.out.printf("%14s %-15s %8s %s%n", "Value", "Unscaled value", "Scale", "Precision");
 //        String template = String.format("%15s %-15d %8d %d %n" );
@@ -42,6 +40,10 @@ public class BigDecimalDemo {
         BigDecimal testVal2 = BigDecimal.valueOf(1.111111111222222244444333333355555556663333);
         System.out.printf("%15s %-15d %8d %d %n", testVal1, testVal1.unscaledValue(), testVal1.scale(), testVal1.precision());
         System.out.printf("%15s %-15d %8d %d %n", testVal2, testVal2.unscaledValue(), testVal2.scale(), testVal2.precision());
-
+        System.out.println("-".repeat(50));
+        for (BigDecimal bd : bigDArray) {
+            bd.setScale(2);
+            System.out.printf("%15s %-15d %8d %d %n", bd, bd.unscaledValue(), bd.scale(), bd.precision());
+        }
     }
 }

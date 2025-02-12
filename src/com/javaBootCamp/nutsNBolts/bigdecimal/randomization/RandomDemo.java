@@ -1,5 +1,9 @@
 package com.javaBootCamp.nutsNBolts.bigdecimal.randomization;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.util.Random;
 
 public class RandomDemo {
@@ -57,5 +61,21 @@ public class RandomDemo {
         System.out.println("-".repeat(30));
         System.out.println("random double stream between a range with size method");
         r.doubles(6, 1, 10).forEach(System.out::println);
+
+        System.out.println("-".repeat(30));
+        System.out.println("random integer with seed values");
+
+        long nano = System.nanoTime();
+        var seed = LocalDate.now().toEpochSecond(LocalTime.now(), ZoneOffset.UTC);
+        Random r2 = new Random(nano);
+        Random r3 = new Random(nano);
+        Random r4 = new Random(seed);
+
+        r2.ints(5, 1, 25).forEach(n -> System.out.print(n + " "));
+        System.out.println();
+        System.out.println("-".repeat(30));
+        r3.ints(5, 1, 25).forEach(n -> System.out.print(n + " "));System.out.println();
+        System.out.println("-".repeat(30));
+        r4.ints(5, 1, 25).forEach(n -> System.out.print(n + " "));
     }
 }

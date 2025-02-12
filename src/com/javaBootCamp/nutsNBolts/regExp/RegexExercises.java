@@ -1,4 +1,4 @@
-package com.javaBootCamp.nutsNBolts.bigdecimal.regExp;
+package com.javaBootCamp.nutsNBolts.regExp;
 
 public class RegexExercises {
     public static void main(String[] args) {

@@ -26,5 +26,30 @@ public class PatternMatching {
         System.out.printf("%b : %s%n", matcher1.find(), line1);
         System.out.println("matcher ending index: " + matcher1.end());
         System.out.println("search matched on result: " + line1.substring(matcher1.start(), matcher1.end()));
+        System.out.println("get substring of the result from matcher: " + matcher1.group());
+        System.out.println("-".repeat(36));
+
+        String htmlSnippet = """
+                <h1> My big Heading</h1>
+                <h2> sub-heading of size h2</h3>
+                <H3> small-heading of size h3</H3>
+                <p>This is a paragraph about something</p>
+                <p>This is another paragraph about something about something more</p>
+                <h3> This a summary</h3>
+                """;
+        Pattern htmlPattern = Pattern.compile("<[hH](\\d)>(.*)</[hH]\\d>");
+        Matcher htmlMatcher = htmlPattern.matcher(htmlSnippet);
+
+        while (htmlMatcher.find()) {
+            System.out.println("group:- " + htmlMatcher.group());
+        }
+
+        htmlMatcher.reset();
+        System.out.println("-".repeat(36));
+        System.out.println("Demo of grouping and Capturing");
+        while (htmlMatcher.find()) {
+            System.out.println("sub strings from group " + htmlMatcher.group(1) + ":- " + htmlMatcher.group(2));
+        }
+
     }
 }

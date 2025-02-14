@@ -55,11 +55,20 @@ public class PatternMatching {
         System.out.println("-".repeat(36));
         System.out.println("Print matches with lambda expression version");
         htmlMatcher.results().forEach(matchResult -> System.out.println(matchResult.group(1) + " : " + matchResult.group(2)));
+
         htmlMatcher.reset();
         System.out.println("-".repeat(36));
         System.out.println("Replace regex string using pattern matcher");
-        String replacement = "Updated Heading h1";
-        String updatedSnippet = htmlMatcher.replaceFirst(replacement);
-        System.out.println("updated Snippet after replacement: " + updatedSnippet);
+//        String replacement = "Updated Heading h1";
+//        String updatedSnippet = htmlMatcher.replaceFirst(replacement);
+//        replacing by appending to the current string
+        String updatedSnippet = htmlMatcher.replaceFirst(s -> "<em>" + htmlMatcher.group(2) + "</em>");
+        System.out.println("updated Snippet after replacement: \n" + updatedSnippet);
+
+        htmlMatcher.reset();
+        System.out.println("-".repeat(36));
+        System.out.println("Replace all regex string using pattern matcher");
+        String replacedString = htmlMatcher.replaceAll("<em>$2 </em>");
+        System.out.println("after replacement: \n" + replacedString);
     }
 }

@@ -51,5 +51,15 @@ public class PatternMatching {
             System.out.println("sub strings from group " + htmlMatcher.group(1) + ":- " + htmlMatcher.group(2));
         }
 
+        htmlMatcher.reset();
+        System.out.println("-".repeat(36));
+        System.out.println("Print matches with lambda expression version");
+        htmlMatcher.results().forEach(matchResult -> System.out.println(matchResult.group(1) + " : " + matchResult.group(2)));
+        htmlMatcher.reset();
+        System.out.println("-".repeat(36));
+        System.out.println("Replace regex string using pattern matcher");
+        String replacement = "Updated Heading h1";
+        String updatedSnippet = htmlMatcher.replaceFirst(replacement);
+        System.out.println("updated Snippet after replacement: " + updatedSnippet);
     }
 }

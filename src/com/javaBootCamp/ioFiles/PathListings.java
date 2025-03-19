@@ -10,9 +10,10 @@ public class PathListings {
     public static void main(String[] args) {
         Path testPath = Path.of("files/testing.txt");
         Path nestedPath = Path.of("this/is/severa;/folders/deep/testing.txt");
-        printPathInfo(testPath);
+//        printPathInfo(testPath);
         logStatement(testPath);
         logStatement(nestedPath);
+        printAttributeInfo(testPath);
     }
 
     private static void printPathInfo(Path path) {
@@ -39,15 +40,26 @@ public class PathListings {
 
     private static void logStatement(Path path) {
         Path parent = path.getParent();
-        try{
-            if(!Files.exists(parent)){
+        try {
+            if (!Files.exists(parent)) {
 //                Files.createDirectory(parent);
                 Files.createDirectories(parent);
             }
-            Files.writeString(path, Instant.now() + "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur \n", StandardOpenOption.CREATE,StandardOpenOption.APPEND);
+            Files.writeString(path, Instant.now() + "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur \n", StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    private static void printAttributeInfo(Path path) {
+        try {
+            var attrs = Files.readAttributes(path, "*");
+            attrs.entrySet().forEach(System.out::println);
+            System.out.println(Files.probeContentType(path));
+        } catch (IOException e) {
+            System.out.println("Problem getting attributes");
+            e.printStackTrace();
+        }
     }
 }

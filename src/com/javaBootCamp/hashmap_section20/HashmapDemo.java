@@ -89,8 +89,8 @@ public class HashmapDemo {
             System.out.println(entry.getKey() + ":-" + entry.getValue());
         }
 
-        var reversedMap = linkedMapper.reversed();
-        System.out.println(reversedMap);
+//        var reversedMap = linkedMapper.reversed();
+//        System.out.println(reversedMap);
 
     }
 }

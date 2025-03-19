@@ -1,6 +1,7 @@
 package com.javaBootCamp.arrayLists_section17;
 
 import java.util.*;
+import java.util.List;
 
 public class ArrayListDemo {
     public static void main(String[] args) {
@@ -26,17 +27,17 @@ public class ArrayListDemo {
         countries.remove("France");
         System.out.println(countries);
 
-        String first = countries.getFirst();
-        System.out.println(first);
-        String last = countries.getLast();
-        System.out.println(last);
+//        String first = countries.getFirst();
+//        System.out.println(first);
+//        String last = countries.getLast();
+//        System.out.println(last);
         Random random = new Random();
         String randomCountry = countries.get(random.nextInt(0, countries.size()));
         System.out.println(randomCountry);
 
 //        reversed instance pf the list
-        List<String> reversed = countries.reversed();
-        System.out.println(reversed);
+//        List<String> reversed = countries.reversed();
+//        System.out.println(reversed);
 
 //        clearing the arraylist
 //        countries.clear();

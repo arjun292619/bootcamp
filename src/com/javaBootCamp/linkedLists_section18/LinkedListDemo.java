@@ -1,5 +1,6 @@
 package com.javaBootCamp.linkedLists_section18;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class LinkedListDemo {
         String firstElement = countryNames.getFirst();
         String lastElement = countryNames.getLast();
         System.out.println(countryNames.toString());
-        List<String> reversedCountryNames = countryNames.reversed();
-        System.out.println(reversedCountryNames);
+        Collections.reverse(countryNames);
+        System.out.println(countryNames);
     }
 }

@@ -58,7 +58,6 @@ public class FileReadingDemo {
                 Files.createFile(path);
                 System.out.println("Created a new file " + filename);
                 if (Files.isWritable(path)) {
-                    ;
                     Files.writeString(path, """
                             Writing some sample data
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 

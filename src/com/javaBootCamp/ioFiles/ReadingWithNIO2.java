@@ -15,11 +15,11 @@ public class ReadingWithNIO2 {
     public static void main(String[] args) {
         System.out.println(System.getProperty("file.encoding"));
         System.out.println(Charset.defaultCharset());
-        Path fixedFilePath = Path.of("fixedWidth.txt");
+        Path fixedFilePath = Path.of("files/fixedWidth.txt");
         try {
-            System.out.println(new String(Files.readAllBytes(fixedFilePath)));
+//            System.out.println(new String(Files.readAllBytes(fixedFilePath)));
             System.out.println("-".repeat(30));
-            System.out.println(new String(Files.readString(fixedFilePath)));
+//            System.out.println(new String(Files.readString(fixedFilePath)));
             Pattern pattern = Pattern.compile("(.{15})(.{3})(.{12})(.{8})(.{2}).*");
             Set<String> values = new TreeSet<>();
             Files.readAllLines(fixedFilePath).stream().skip(1).forEach(s -> {

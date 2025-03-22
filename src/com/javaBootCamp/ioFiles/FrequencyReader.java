@@ -5,9 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -15,9 +14,9 @@ public class FrequencyReader {
     public static void main(String[] args) {
         int count = 0;
         String articlepath = "files/grandCanyon.txt";
-        String bigBenpath = "files/bigben.txt";
+        String bigBenPath = "files/bigben.txt";
         System.out.println("\n" + "-".repeat(40));
-        try (BufferedReader br = new BufferedReader(new FileReader(bigBenpath))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(bigBenPath))) {
 //            System.out.printf(" %,d lines in the file %n", br.lines().count());
             Pattern pattern = Pattern.compile("\\p{javaWhitespace}+");
 
@@ -69,10 +68,27 @@ public class FrequencyReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("\n" + "-".repeat(40));
+        System.out.println("\n" + "-".repeat(40) + "Using read String" + "-".repeat(40));
         try {
-            String bigBen = Files.readString(Path.of(bigBenpath));
-            bigBen = bigBen.replaceAll("\\p{javaWhitespace}", "");
+            String bigBen = Files.readString(Path.of(bigBenPath));
+            bigBen = bigBen.replaceAll("\\p{Punct}", "");
+            Pattern pattern = Pattern.compile("\\w+");
+            Matcher matcher = pattern.matcher(bigBen);
+            Map<String, Long> results = new HashMap<>();
+            while (matcher.find()) {
+                String word = matcher.group().toLowerCase().trim();
+                if (word.length() > 4) {
+                    results.merge(word, 1L, (o, n) -> o += 1);
+                }
+            }
+
+            var sortedEntries = new ArrayList<>(results.entrySet());
+            sortedEntries.sort(Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder()));
+
+            for (int i = 0; i < Math.min(10, sortedEntries.size()); i++) {
+                var entry = sortedEntries.get(i);
+                System.out.println(entry.getKey() + " - " + entry.getValue() + " times");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

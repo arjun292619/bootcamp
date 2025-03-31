@@ -4,10 +4,11 @@ import com.javaBootCamp.ioFiles.student.Course;
 import com.javaBootCamp.ioFiles.student.Student;
 
 import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -42,16 +43,17 @@ public class FileWriting {
 //            e.printStackTrace();
 //        }
 
-        try {
-            List<String> data = new ArrayList<>();
-            data.add(header);
-            for (Student student : students) {
-                data.addAll(student.getEngagementRecords());
-            }
-            Files.write(studentPath, data);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+// Add it to a List and use Files.write once to complete writing
+//        try {
+//            List<String> data = new ArrayList<>();
+//            data.add(header);
+//            for (Student student : students) {
+//                data.addAll(student.getEngagementRecords());
+//            }
+//            Files.write(studentPath, data);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
         try (BufferedWriter bwriter  = Files.newBufferedWriter(Path.of("students2.csv"))){
             bwriter.write(header);
@@ -65,5 +67,31 @@ public class FileWriting {
         } catch (IOException e){
             e.printStackTrace();
         }
+
+        try (FileWriter fw = new FileWriter("students3.csv")){
+            fw.write(header);
+            for (Student student: students){
+                for (String record: student.getEngagementRecords()){
+                    fw.write(record);
+                }
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        try (PrintWriter printWriter = new PrintWriter("students4.csv")){
+            printWriter.write(header);
+            for (Student student: students){
+                for (String record: student.getEngagementRecords()){
+                    printWriter.println(record);
+                }
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+
     }
+
+
 }
